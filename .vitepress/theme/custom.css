@@ -1,0 +1,74 @@
+/* ── Design Tokens ───────────────────────────────────── */
+:root {
+  --vp-c-brand-1: #8B5CF6;
+  --vp-c-brand-2: #A78BFA;
+  --vp-c-brand-3: #7C3AED;
+  --vp-c-brand-soft: rgba(139, 92, 246, 0.14);
+
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+.dark {
+  --vp-c-brand-1: #A78BFA;
+  --vp-c-brand-2: #8B5CF6;
+  --vp-c-brand-3: #C4B5FD;
+  --vp-c-brand-soft: rgba(167, 139, 250, 0.14);
+}
+
+/* ── Typography ──────────────────────────────────────── */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3 {
+  font-family: var(--font-display);
+}
+
+.vp-doc {
+  font-family: var(--font-body);
+}
+
+.vp-doc code {
+  font-family: var(--font-mono);
+}
+
+/* ── Hero Section ────────────────────────────────────── */
+.VPHero .name {
+  font-family: var(--font-display);
+}
+
+.VPHero .text {
+  font-family: var(--font-display);
+}
+
+.VPHero .tagline {
+  font-family: var(--font-body);
+}
+
+/* ── Button Brand Color ──────────────────────────────── */
+.VPButton.brand {
+  border-color: var(--vp-c-brand-1);
+  color: #fff;
+  background-color: var(--vp-c-brand-1);
+}
+
+.VPButton.brand:hover {
+  border-color: var(--vp-c-brand-2);
+  background-color: var(--vp-c-brand-2);
+}
+
+/* ── Language Switcher Icon ──────────────────────────── */
+/* ── Landing Page Overrides ──────────────────────────── */
+.VPPage:has(.landing-hero) {
+  padding: 0;
+}
+
+.VPPage:has(.landing-hero) + .VPFooter {
+  background: #0A0A10;
+  border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Language Switcher Icon ──────────────────────────── */
+.vpi-languages {
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='2' y1='12' x2='22' y2='12'/%3E%3Cpath d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'/%3E%3C/svg%3E");
+}
