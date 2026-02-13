@@ -19,4 +19,8 @@ Humans are harder than distributed systems.
 
 ## Contact
 
-libraz@libraz.net
+<SvgEmail />
+
+<script setup>
+import SvgEmail from '@/components/SvgEmail.vue'
+</script>
