@@ -2,6 +2,7 @@
 interface Project {
   name: string
   description: string
+  note?: string
   category: 'music' | 'language' | 'infra'
   categoryLabel: string
   tech: string[]
@@ -13,6 +14,7 @@ const projects: Project[] = [
   {
     name: 'Suzume',
     description: 'Japanese tokenizer for the browser. Under 350 KB, zero dictionary files.',
+    note: 'A design I\u2019d had in mind for years, finally built with AI pinning it down through massive test suites. MeCab was no oracle\u2014it had its own bugs. Language is endlessly hard.',
     category: 'language',
     categoryLabel: 'Language',
     tech: ['C++', 'WASM'],
@@ -22,6 +24,7 @@ const projects: Project[] = [
   {
     name: 'MIDI Sketch',
     description: 'Pop music MIDI generator grounded in music theory. 9 tracks, seed-based, deterministic.',
+    note: 'Built for my day job\u2014briefing composers on song ideas. Watching music emerge from C++ was a strange and fascinating feeling.',
     category: 'music',
     categoryLabel: 'Music',
     tech: ['C++', 'WASM'],
@@ -31,6 +34,7 @@ const projects: Project[] = [
   {
     name: 'MIDI Sketch Bach',
     description: 'Bach instrumental works generator. Fugues, chorales, cello suites, the Chaconne.',
+    note: 'Thought counterpoint was just logic. I was wrong. Every generated piece reminds me how great Bach was. Music is endlessly hard.',
     category: 'music',
     categoryLabel: 'Music',
     tech: ['C++', 'WASM'],
@@ -40,6 +44,7 @@ const projects: Project[] = [
   {
     name: 'MygramDB',
     description: 'In-memory full-text search with MySQL replication. 27\u20133700\u00d7 faster than MySQL FULLTEXT.',
+    note: 'Full-text search broke on a 100M-pageview/month project. Built this, shipped it to production. Problem solved.',
     category: 'infra',
     categoryLabel: 'Search',
     tech: ['C++', 'Docker'],
@@ -49,6 +54,7 @@ const projects: Project[] = [
   {
     name: 'libsonare',
     description: 'librosa-compatible audio analysis for C++ and browsers. BPM, key, chords, beats.',
+    note: 'A tool as great as librosa being Python-only felt unfair to every other language. So I made it a WASM project.',
     category: 'music',
     categoryLabel: 'Audio',
     tech: ['C++', 'WASM'],
@@ -58,6 +64,7 @@ const projects: Project[] = [
   {
     name: 'BPM Detector',
     description: 'Comprehensive music analysis. Tempo, key, chords, structure, timbre \u2014 all from audio.',
+    note: 'Needed to put music into words when commissioning tracks at work. Python because librosa was the only option back then.',
     category: 'music',
     categoryLabel: 'Audio',
     tech: ['Python', 'Docker'],
@@ -117,6 +124,7 @@ function open(url: string) {
 
           <h3 class="card__name">{{ project.name }}</h3>
           <p class="card__desc">{{ project.description }}</p>
+          <p v-if="project.note" class="card__note">{{ project.note }}</p>
 
           <div class="card__foot">
             <span v-for="t in project.tech" :key="t" class="card__pill">{{ t }}</span>
@@ -161,13 +169,16 @@ function open(url: string) {
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.125rem;
+  column-gap: 1.125rem;
+  row-gap: 1.125rem;
 }
 
 /* ── Card ──────────────────────────────────────────── */
 .card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 5;
+  row-gap: 0;
   padding: 1.35rem 1.4rem 1.25rem;
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -246,7 +257,28 @@ function open(url: string) {
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.45);
   margin: 0;
-  flex: 1;
+}
+
+/* ── Card note (author comment) ────────────────────── */
+.card__note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.25);
+  margin: 0;
+  padding-left: 1.1rem;
+  padding-top: 0.75rem;
+  align-self: start;
+  position: relative;
+}
+
+.card__note::before {
+  content: '//';
+  position: absolute;
+  left: 0;
+  font-style: normal;
+  color: color-mix(in srgb, var(--accent) 40%, transparent);
 }
 
 /* ── Card footer ───────────────────────────────────── */
@@ -254,7 +286,9 @@ function open(url: string) {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  margin-top: 1.1rem;
+  margin: 0;
+  padding-top: 1.1rem;
+  align-self: end;
 }
 
 .card__pill {
