@@ -81,9 +81,9 @@ function path(amp: number, periods: number, yOff: number): string {
 
     <div class="landing-hero__inner">
       <div class="landing-hero__tagline">
-        <p>Every sentence can be parsed another way.</p>
-        <p>Every chord can resolve somewhere else.</p>
-        <p class="landing-hero__tagline-accent">The ambiguity is deliberate.</p>
+        <p>Harmony compiled.</p>
+        <p>Language compiled.</p>
+        <p class="landing-hero__tagline-accent">Execution failed.</p>
       </div>
     </div>
   </section>

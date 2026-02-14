@@ -1,7 +1,7 @@
 ---
 layout: page
-title: libraz
-titleTemplate: Software Engineer & Music Technologist
+title: libraz — Personal Homepage
+titleTemplate: false
 ---
 
 <LandingHero />

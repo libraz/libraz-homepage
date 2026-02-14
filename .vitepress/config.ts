@@ -6,7 +6,7 @@ const siteUrl = 'https://libraz.net'
 export default defineConfig({
   srcDir: 'src',
   title: 'libraz',
-  description: 'Software Engineer & Music Technologist',
+  description: 'Personal homepage of libraz. Open-source projects in music, language, and search infrastructure.',
 
   appearance: 'force-dark',
 
@@ -40,7 +40,7 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/libraz' },
     ],
     footer: {
-      copyright: '\u00a9 2026 libraz',
+      copyright: '© 2026 libraz · All bugs are considered features.',
     },
   },
 
